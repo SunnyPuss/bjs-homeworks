@@ -15,6 +15,8 @@ function getResult(a,b,c){
     let (D = Math.pow(b,2)) - (4 * a * c);
     if (D < 0) {
         console.log(Корней нет);
+        x = ["Отсутсвуют корни"];
+        return x;
     } else if (D == 0) {
         x = (-b + Math.sqrt(D)) / (2 * a);
         console.log(x);
@@ -36,7 +38,8 @@ function calculateDrinkTask(){
 }
 
 function askDrink(name,dateOfBirthday){
-    let age = new Date() - dateOfBirthday.getFullYear();
+    let actualYear = new Date();
+    let age = actualYear.getFullYear() - dateOfBirthday.getFullYear();
     result = (age >= 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
     console.log(result);
     return result;
@@ -50,9 +53,13 @@ function calculateAverageRating(){
 
 function getAverageMark(marks){
     let sum = 0;
-    for (let i = 0; i < 5, i++) {
-        sum += marks[i];
+    let lengthCheck = marks.lenght;
+    if  (marks.length >= 5) {
+        marks.lenght = 5;
     }
-    averageMark = sum / marks.lenght;
+    for (let i = 0; i < marks.lenght; i++) {
+            sum += marks[i]
+    }   
+    averageMark = sum / marks.length;
     return averageMark;
 }
