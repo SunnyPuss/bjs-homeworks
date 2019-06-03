@@ -1,4 +1,4 @@
-
+"use strict";
 
 function calculateQuadraticEquation(){
     let a = +window.a.value;
@@ -11,20 +11,19 @@ function calculateQuadraticEquation(){
 }
 
 function getResult(a,b,c){
-    use strict;
-    let (D = Math.pow(b,2)) - (4 * a * c);
-    if (D < 0) {
-        console.log(Корней нет);
-        x = ["Отсутсвуют корни"];
+    let d = Math.pow(b, 2) - (4 * a * c);
+    if (d < 0) {
+        console.log("Корней нет");
+        let x = [];
         return x;
-    } else if (D == 0) {
-        x = (-b + Math.sqrt(D)) / (2 * a);
+    } else if (d == 0) {
+        let x = (-b + Math.sqrt(d)) / (2 * a);
         console.log(x);
         return x;       
-    } else if (D > 0) {
-        x1 = (-b + Math.sqrt(D)) / (2 * a);
-        x2 = (-b - Math.sqrt(D)) / (2 * a);
-        x = [x1, x2];
+    } else if (d > 0) {
+        let x1 = (-b + Math.sqrt(d)) / (2 * a);
+        let x2 = (-b - Math.sqrt(d)) / (2 * a);
+        let x = [x1, x2];
         console.log(x);
         return x;
     }
@@ -40,7 +39,7 @@ function calculateDrinkTask(){
 function askDrink(name,dateOfBirthday){
     let actualYear = new Date();
     let age = actualYear.getFullYear() - dateOfBirthday.getFullYear();
-    result = (age >= 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
+    let result = (age >= 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
     console.log(result);
     return result;
 }
@@ -53,13 +52,12 @@ function calculateAverageRating(){
 
 function getAverageMark(marks){
     let sum = 0;
-    let lengthCheck = marks.lenght;
-    if  (marks.length >= 5) {
-        marks.lenght = 5;
+    if (marks.length > 5) {
+        marks = marks.slice(0, 5);
+    } 
+    for (let i = 0; i < marks.length; i++) {
+        sum += marks[i];
     }
-    for (let i = 0; i < marks.lenght; i++) {
-            sum += marks[i]
-    }   
-    averageMark = sum / marks.length;
-    return averageMark;
+    let avg = sum / marks.length;
+    return avg;
 }
